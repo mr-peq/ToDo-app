@@ -65,6 +65,9 @@ section:last-child{
 ul{
     width: 100%;
     margin-bottom: 5%;
+
+    position: relative;
+    right: 2%;
 }
 
 li{
@@ -77,6 +80,10 @@ li{
 
     justify-content: space-evenly;
     margin-bottom: 0.5em;
+}
+
+.item:hover{
+    background-color: rgb(190, 200, 219);
 }
 
 #important li{
@@ -144,12 +151,14 @@ li{
     left: 30%;
     width: 40%;
     height: 40%;
+    z-index: 9999;                  /* ++++ */
 
     background-color: rgb(209, 214, 219);
     display: flex;
     align-items: center;
     justify-content: space-around;
 }
+
 
 .helper-input{
     width: 90%;
@@ -163,6 +172,16 @@ li{
 
     cursor: text;
     font-size: 1.5rem;
+}
+
+#scheduled .helper-input{               /* ++++ */
+    height: 50%;
+    top: 5%;
+}
+
+.helper-date{                       /* ++++ */
+    position: absolute;
+    bottom: 30%;
 }
 
 .helper-confirm, .helper-cancel{                            /*'confirm' et 'cancel' = même types de boutons: possible de grouper plusieurs propriétés CSS*/
