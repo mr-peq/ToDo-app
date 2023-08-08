@@ -1,0 +1,197 @@
+body{                   /* => 'body' remplit tout l'espace de la page*/
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* ================================== !! FLEXXXX !! STRUCTURE ================================== */
+
+.container{
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+
+    height: 100vh;
+}
+
+/* ================================== TITRE PAGE ================================== */
+
+header{
+    position: sticky;
+    top: 0;                     /*=> !! 'top: 0' => nécessaire, sinon l'élément ne sait pas OÙ se 'stick'...*/
+    z-index: 9999;
+
+    padding: 0.5%;
+
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    
+    background-color: rgb(231, 222, 222);
+}
+
+/* ================================== CATÉGORIES PRINCIPALES ================================== */
+
+section{
+    width: 100%;
+    max-width: 1060px;          /* => Comme 'max-width' est défini à 1060px, le contenu s'étendra sur 100% de la largeur, mais s'arrêtera à 1060px */
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    background-color: rgb(217, 222, 230);
+}
+
+section:last-child{
+    flex: auto;
+}
+
+
+/* ================================== SOUS-CATÉGORIES ================================== */
+
+.headband-wrapper{
+    display: inline-flex;
+    width: 100%;
+
+    justify-content: space-around;
+    align-items: center;
+
+    border-top: 2px solid black;
+}
+
+ul{
+    width: 100%;
+    margin-bottom: 5%;
+}
+
+li{
+    width: 60%;
+}
+
+.item{
+    display: inline-flex;
+    width: 100%;
+
+    justify-content: space-evenly;
+    margin-bottom: 0.5em;
+}
+
+#important li{
+    color: red;
+    font-weight: bold;
+}
+
+
+
+/* ================================== BOUTONS ADD / DELETE ================================== */
+
+.add-button{
+    position: absolute;
+    right: 25%;
+
+    border: 2px solid rgba(235, 219, 219, 0.521);
+    border-radius: 10%;
+
+    padding: 0.2em 0.4em;
+    background-image: linear-gradient(160deg, rgb(117, 233, 167), rgb(24, 160, 238));
+    color: white;
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+.add-button:hover{
+    border: 2px solid white;
+    
+}
+
+.delete-button{
+    margin-right: 20px;
+
+    width: 20px;
+    height: 20px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border: 2px solid white;
+    border-radius: 20%;
+    padding: 1px 1px;
+
+    background-image: linear-gradient(.375turn, rgb(255, 174, 0) 10%, rgb(255, 0, 0));
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.delete-button:hover{
+    border: 3px solid white;
+    width: 20px;
+    height: 20px;
+    padding: 0;
+}
+
+
+/* ================================== HELPER ================================== */
+
+.helper{
+    position: fixed;
+    top: 50%;
+    left: 30%;
+    width: 40%;
+    height: 40%;
+
+    background-color: rgb(209, 214, 219);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.helper-input{
+    width: 90%;
+    height: 70%;
+
+    position: absolute;
+    left: 5%;
+    bottom: 20%;
+
+    background-color: white;
+
+    cursor: text;
+    font-size: 1.5rem;
+}
+
+.helper-confirm, .helper-cancel{                            /*'confirm' et 'cancel' = même types de boutons: possible de grouper plusieurs propriétés CSS*/
+    width: 20%;
+    height: 16%;
+
+    position: absolute;  
+
+    color: white;
+    font-weight: bold;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+}
+
+.helper-confirm{
+    right: 15%;
+    bottom: 2%;
+
+    background-color: rgb(76, 195, 211);
+}
+
+.helper-cancel{
+    left: 15%;
+    bottom: 2%;
+
+    background-color: rgb(236, 30, 30);
+}
+
