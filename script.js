@@ -2,7 +2,9 @@ document.addEventListener('click', helper);     // => Event listener sur tout le
                                                 //.. parents du "add-button", on a donc pas besoin de le "catch" spécifiquement à cet endroit là en partant du DOM
 
 document.addEventListener('click', deleteItem); // => En revanche, celui du "delete-button" DOIT être sur le document car il n'existe pas encore tant que
-                                                //.. l'utilisateur n'a pas créé un nouvel "item"
+                                                //.. l'utilisateur n'a pas créé un nouvel "item
+
+document.addEventListener('click', hideSection);
 
 let ulTarget;                  // => Le <ul> le plus proche du "add-button" cliqué (là où on va placer l'item)                            
 let currentHelper;                  // => Pour sauvegarder le fait qu'un helper est présent (bloque les autres 'events')
@@ -114,6 +116,8 @@ function createItem(){
             ulTarget.append(elem);
         }
     }
+
+    ulTarget.hidden = false;
         
     currentHelper.remove();
     currentHelper = undefined;
@@ -129,6 +133,21 @@ function cancelCreation(){
 function deleteItem(event){
     if(!event.target.classList.contains('delete-button') || currentHelper != undefined ) return;
 
+    ulTarget = event.target.closest('UL');
     event.target.parentElement.remove();
+
+    if(!ulTarget.firstElementChild) ulTarget.hidden = true;
 }
 
+
+/* ================================== SECTIONS ================================== */
+
+
+function hideSection(event){
+    if(currentHelper != undefined || event.target.tagName != 'H2') return;
+    
+    ulTarget = event.target.parentElement.nextElementSibling;
+    if(!ulTarget.firstElementChild) return;
+    
+    ulTarget.hidden = !ulTarget.hidden;
+}
