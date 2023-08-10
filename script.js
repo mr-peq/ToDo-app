@@ -75,9 +75,14 @@ function buildHelper(){
 }
 
 function moveHelper(event){
-    if(!event.target.classList.contains('helper') || currentHelper == undefined) return;
+    if(!event.target.classList.contains('helper') || currentHelper == undefined || event.button) return;
 
-    currentHelper.addEventListener('dragstart', event => event.preventDefault());
+    currentHelper.addEventListener('dragstart', prevent);
+    document.addEventListener('selectstart', prevent);          // => bugfix: empêche les autres éléments du DOM d'être selectionnés accidentellement pendant qu'on déplace le helper
+
+    function prevent(event){
+        event.preventDefault();
+    }
 
     let shiftX = event.offsetX;
     let shiftY = event.offsetY;
@@ -97,6 +102,7 @@ function moveHelper(event){
 
     document.addEventListener('mouseup', () => {
         document.removeEventListener('mousemove', onMouseMove);
+        document.removeEventListener('selectstart', prevent);
     });
 }
 
