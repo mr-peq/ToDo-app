@@ -95,7 +95,7 @@ li{
 
 /* ================================== BOUTONS ADD / DELETE ================================== */
 
-.add-button{
+.add-button, .mini-add-button{
     position: absolute;
     right: 25%;
 
@@ -110,9 +110,29 @@ li{
     cursor: pointer;
 }
 
-.add-button:hover{
+.add-button:hover, .mini-add-button:hover{
     border: 2px solid white;
     
+}
+
+.mini-add-button{
+    display: none;
+}
+
+@media (max-width: 1060px){             /* => !Rappel! media queries placés en-dessous des sélecteurs 'add-button' & 'mini...' pour override en cascade!*/
+    .add-button{
+        right: 12.5%;
+    }
+}
+
+@media (max-width: 720px){
+    .mini-add-button{
+        display: inline;
+        right: 12.5%;
+    }
+    .add-button{
+        display: none;
+    }
 }
 
 .delete-button{
