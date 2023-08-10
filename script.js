@@ -54,6 +54,11 @@ function buildHelper(){
     let helper = document.createElement('div');                 // => On crée le "helper" (= fenêtre de création du nouvel item)
     helper.classList.add('helper');
 
+    let title = document.createElement('p');
+    title.textContent = `Add ${currentCategory.id} item`;
+    title.classList.add('helper-title');
+
+
     let input = document.createElement('textarea');                  // => On crée l'espace pour entrer le texte ("input"), le bouton OK ("confirm") et celui
     input.classList.add('helper-input');                        //.. d'annulation("cancel")
     input.placeholder = "Enter text here...";
@@ -67,6 +72,7 @@ function buildHelper(){
     cancel.innerHTML = "CANCEL";
 
 
+    helper.insertAdjacentElement('afterbegin', title);
     helper.insertAdjacentElement('afterbegin', input);          // => On ajoute "input", "confirm" et "cancel" au "Helper"
     helper.insertAdjacentElement('beforeend', confirm);
     helper.insertAdjacentElement('beforeend', cancel);

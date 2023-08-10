@@ -162,7 +162,7 @@ li{
 
 .helper-input{
     width: 90%;
-    height: 70%;
+    height: 55%;
 
     position: absolute;
     left: 5%;
@@ -172,6 +172,15 @@ li{
 
     cursor: text;
     font-size: 1.5rem;
+}
+
+.helper-title{
+    position: absolute;
+    top: 5%;
+    margin: 0;
+    
+    font-size: 1.2rem;
+    font-weight: bold;
 }
 
 #scheduled .helper-input{               /* ++++ */
