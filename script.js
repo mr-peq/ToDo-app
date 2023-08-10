@@ -6,6 +6,9 @@ document.addEventListener('click', deleteItem); // => En revanche, celui du "del
 
 document.addEventListener('click', hideSection);
 
+document.addEventListener('mousedown', moveHelper);
+
+
 let ulTarget;                  // => Le <ul> le plus proche du "add-button" cliqué (là où on va placer l'item)                            
 let currentHelper;                  // => Pour sauvegarder le fait qu'un helper est présent (bloque les autres 'events')
 let liScheduled = [];               // => La liste des items "scheduled"
@@ -69,6 +72,32 @@ function buildHelper(){
     helper.insertAdjacentElement('beforeend', cancel);
 
     return helper;
+}
+
+function moveHelper(event){
+    if(!event.target.classList.contains('helper') || currentHelper == undefined) return;
+
+    currentHelper.addEventListener('dragstart', event => event.preventDefault());
+
+    let shiftX = event.offsetX;
+    let shiftY = event.offsetY;
+
+    moveAt(event.pageX, event.pageY);
+
+    function moveAt(x, y){
+        currentHelper.style.left = x - shiftX + 'px';
+        currentHelper.style.top = y - shiftY + 'px';
+    }
+
+    function onMouseMove(event){
+        moveAt(event.pageX, event.pageY);
+    }
+
+    document.addEventListener('mousemove', onMouseMove);
+
+    document.addEventListener('mouseup', () => {
+        document.removeEventListener('mousemove', onMouseMove);
+    });
 }
 
 
